@@ -30,9 +30,25 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+// Smooth Scrolling
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
 
 btnScrollTo.addEventListener("click", function (e) {
   section1.scrollIntoView({ behavior: "smooth" });
+});
+
+// Page Navigation
+// 1. Add event listener to common parent element
+// 2. Determine what element organised the event
+
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // Matching Strategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
 });
